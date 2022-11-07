@@ -58,7 +58,7 @@ app.get("/tweets", async function (req, res) {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Go here to login: ${URL}:${PORT}/login`);
-});
+app.listen(3000, function() {
+  console.log('App listening on port 3000')
+})
   
