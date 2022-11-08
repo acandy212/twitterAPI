@@ -3,6 +3,18 @@ import { Client, auth } from "twitter-api-sdk";
 import dotenv from "dotenv";
 dotenv.config();
 
+const apikey = 'e1vXHQ6DeFlCgEs5XXj4V68Ex'
+const apiSecretKey = 'Oep79Vr62B07ZqrCCyge1Eyol8nCZvjQF3qZh4QLk27jy8Jzxx'
+const accessToken = '1589724180580339713-JH5UCybpKlHBscYrxSESMMzRMPbknQ'
+const accessTokenSecret = 'u3klbTBhfN7PYrJf7LpaLgyZq3wNeO5yJcZ2IjerMH7f5'
+
+var T = new Twitter({
+  consumer_key:       apikey,
+  consumer_secret:    apiSecretKey,
+  access_token: accessToken,
+  access_token_secret: accessTokenSecret,
+});
+
 const app = express();
 
 const URL = process.env.URL || 'http://127.0.0.1';
