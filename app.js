@@ -42,7 +42,7 @@ app.get("/callback", async function (req, res) {
   }
 });
   
-app.get("l/ogin", async function (req, res) {
+app.get("/login", async function (req, res) {
   const authUrl = authClient.generateAuthURL({
     state: STATE,
     code_challenge_method: "s256",
