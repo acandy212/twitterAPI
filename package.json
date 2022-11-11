@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "twitter class project",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +18,11 @@
   },
   "homepage": "https://github.com/acandy212/twitterAPI#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "got": "^12.5.2",
+    "oauth-1.0a": "^2.2.6",
+    "twitter-api-sdk": "^1.2.1",
     "twitter-api-v2": "^1.12.9"
   }
 }

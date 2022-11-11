@@ -3,17 +3,18 @@ import { Client, auth } from "twitter-api-sdk";
 import dotenv from "dotenv";
 dotenv.config();
 
-const apikey = 'e1vXHQ6DeFlCgEs5XXj4V68Ex'
-const apiSecretKey = 'Oep79Vr62B07ZqrCCyge1Eyol8nCZvjQF3qZh4QLk27jy8Jzxx'
+const apikey = 'YcywEuOacedK4NOFAw7xwo4oD'
+const apiSecretKey = 'eqGsinvX8YNc9lLoJ2iC9Yjh7UCKxAz3r8pBFqHWnVpkguvWJo'
+const bearerToken = "AAAAAAAAAAAAAAAAAAAAANe0jAEAAAAA%2FQt5SwU4neqhuyQt448J7Zbyztg%3DWMzPu0ZYsrAOcBCKAvytspe8YWXerL9CpkXIuVx9ufzgMqcsVO"
 const accessToken = '1589724180580339713-JH5UCybpKlHBscYrxSESMMzRMPbknQ'
 const accessTokenSecret = 'u3klbTBhfN7PYrJf7LpaLgyZq3wNeO5yJcZ2IjerMH7f5'
 
-var T = new Twitter({
-  consumer_key:       apikey,
-  consumer_secret:    apiSecretKey,
-  access_token: accessToken,
-  access_token_secret: accessTokenSecret,
-});
+// var T = new Twitter({
+//   consumer_key:       apikey,
+//   consumer_secret:    apiSecretKey,
+//   access_token: accessToken,
+//   access_token_secret: accessTokenSecret,
+// });
 
 const app = express();
 
@@ -61,7 +62,7 @@ app.get("/revoke", async function (req, res) {
 
 app.get("/tweets", async function (req, res) {
   try {
-    const response = await client.tweets.createTweet();
+    const response = await client.tweets.createTweet("test");
   
   console.log("response", JSON.stringify(response, null, 2));
     res.send(response);
