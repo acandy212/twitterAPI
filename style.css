@@ -123,3 +123,28 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+.tweetbox_input{
+    display: flex;
+    padding: 20px;
+}
+
+.tweetbox_input input{
+    flex: 1;
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+}
+
+.tweetBox_tweetButton {
+    background-color: var(--twitter-color);
+    border: none;
+    color: white;
+    font-weight: 900;
+    border-radius: 30px;
+    width: 80px; 
+    height: 40px;
+    margin-top: 20px;
+    margin-left: auto;
+}
