@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 dotenv.config();
 
+
 // const apikey = 'YcywEuOacedK4NOFAw7xwo4oD'
 // const apiSecretKey = 'eqGsinvX8YNc9lLoJ2iC9Yjh7UCKxAz3r8pBFqHWnVpkguvWJo'
 // const bearerToken = "AAAAAAAAAAAAAAAAAAAAANe0jAEAAAAA%2FQt5SwU4neqhuyQt448J7Zbyztg%3DWMzPu0ZYsrAOcBCKAvytspe8YWXerL9CpkXIuVx9ufzgMqcsVO"
@@ -184,6 +185,11 @@ app.get('/auth',function(req,res){
   console.log(__dirname);
   res.sendFile(path.join(__dirname+'/auth.html'));
 });
+
+//get the html file
+app.get('/', function (req, response){
+  response.sendfile('index.html');
+})
 
 app.listen(3000, function() {
   console.log('App listening on port 3000')
