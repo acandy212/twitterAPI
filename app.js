@@ -24,8 +24,8 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
-const URL = process.env.URL || 'http://127.0.0.1';
-const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+//const URL = process.env.URL || 'http://127.0.0.1';
+//const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
 import got from 'got';
 import crypto from 'crypto';
@@ -33,6 +33,7 @@ import OAuth from 'oauth-1.0a';
 import qs from 'querystring';
 
 import readline from 'readline';
+import { parseArgs } from "util";
 var rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -149,12 +150,22 @@ async function getRequest({
   }
 }
 
+app.use(express.text());
+
 app.get('/getLink', async function getLink(req,res){
   console.log("BUTTS");
   const authorizeURL = new URL('https://api.twitter.com/oauth/authorize');
   const oAuthRequestToken = await requestToken();
   authorizeURL.searchParams.append('oauth_token', oAuthRequestToken.oauth_token);
-  res.send(authorizeURL.href);
+  res.send(authorizeURL.href + "|" + JSON.stringify(oAuthRequestToken));
+});
+
+app.post('/authorizePin', async function authorizePin(req,res){
+  console.log(req.body);
+  const arr = req.body.split("|");
+  const oAuthRequestToken = JSON.parse(arr[0]);
+  const oAuthAccessToken = await accessToken(oAuthRequestToken, arr[1]);
+  res.send(oAuthAccessToken);
 });
 
 // (async () => {
