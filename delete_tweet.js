@@ -8,19 +8,15 @@ const readline = require("readline").createInterface({
   output: process.stdout,
 });
 
-// The code below sets the consumer key and consumer secret from your environment variables
-// To set environment variables on macOS or Linux, run the export commands below from the terminal:
-// export CONSUMER_KEY='YOUR-KEY'
-// export CONSUMER_SECRET='YOUR-SECRET'
+
 const consumer_key = process.env.CONSUMER_KEY;
 const consumer_secret = process.env.CONSUMER_SECRET;
 
-// Be sure to replace your-tweet-id with the id of the Tweet you wish to delete.
 const id = "your-tweet-id";
 
 const endpointURL = `https://api.twitter.com/2/tweets/${id}`;
 
-// this example uses PIN-based OAuth to authorize the user
+
 const requestTokenURL =
   "https://api.twitter.com/oauth/request_token?oauth_callback=oob";
 const authorizeURL = new URL("https://api.twitter.com/oauth/authorize");
@@ -89,7 +85,7 @@ async function getRequest({ oauth_token, oauth_token_secret }) {
     key: oauth_token,
     secret: oauth_token_secret,
   };
-
+// Now using the delete method to delete a tweet
   const authHeader = oauth.toHeader(
     oauth.authorize(
       {
@@ -105,7 +101,7 @@ async function getRequest({ oauth_token, oauth_token_secret }) {
     headers: {
       Authorization: authHeader["Authorization"],
       "user-agent": "v2DeleteTweetJS",
-      "content-type": "application/json"
+      "content-type": "application/json",
       accept: "application/json",
     },
   });
@@ -118,9 +114,9 @@ async function getRequest({ oauth_token, oauth_token_secret }) {
 
 (async () => {
   try {
-    // Get request token
+  
     const oAuthRequestToken = await requestToken();
-    // Get authorization
+    
     authorizeURL.searchParams.append(
       "oauth_token",
       oAuthRequestToken.oauth_token
