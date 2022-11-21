@@ -5,6 +5,8 @@ import path from "path";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 dotenv.config();
+import Button from 'react-bootstrap/Button';
+
 
 
 // const apikey = 'YcywEuOacedK4NOFAw7xwo4oD'
@@ -262,3 +264,22 @@ app.listen(3000, function() {
   console.log('App listening on port 3000')
 })
   
+
+// Creates a button that allow the user to change the theme
+
+function App() {
+  return (
+    <div className="App">
+
+          <Button variant= "danger" onClick={() => {localStorage.setItem('theme', localStorage.getItem('theme') === 'dark' ? 'light' : 'dark'); 
+        window.location.reload();}}>
+          Change Mode 
+        </Button>
+      <Header 
+        linkText="Learn React"
+        linkUrl="https://reactjs.org" />
+    </div>
+  );
+}
+
+export default App;
