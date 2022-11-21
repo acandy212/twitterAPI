@@ -118,10 +118,10 @@ async function accessToken({
 }
 
 
-async function getRequest({
+async function postTweet({
   oauth_token,
   oauth_token_secret
-}) {
+}, create_tweet) {
 
   const token = {
     key: oauth_token,
@@ -134,7 +134,9 @@ async function getRequest({
   }, token));
 
   const req = await got.post(endpointURL, {
-    json: data,
+    json: {
+      "text": create_tweet
+    },
     responseType: 'json',
     headers: {
       Authorization: authHeader["Authorization"],
@@ -147,6 +149,38 @@ async function getRequest({
     return req.body;
   } else {
     throw new Error('Unsuccessful request');
+  }
+}
+
+async function deleteTweet({ oauth_token, oauth_token_secret }, tweet_id) {
+  const token = {
+    key: oauth_token,
+    secret: oauth_token_secret,
+  };
+  console.log(endpointURL + "/" + tweet_id);
+
+  const authHeader = oauth.toHeader(
+    oauth.authorize(
+      {
+        url: endpointURL + "/" + tweet_id,
+        method: "DELETE",
+      },
+      token
+    )
+  );
+
+  const req = await got.delete(endpointURL, {
+    responseType: "json",
+    headers: {
+      Authorization: authHeader["Authorization"],
+      'user-agent': "v2DeleteTweetJS",
+      'content-type': "application/x-www-form-urlencoded"
+    },
+  });
+  if (req.body) {
+    return req.body;
+  } else {
+    throw new Error("Unsuccessful request");
   }
 }
 
@@ -166,6 +200,22 @@ app.post('/authorizePin', async function authorizePin(req,res){
   const oAuthRequestToken = JSON.parse(arr[0]);
   const oAuthAccessToken = await accessToken(oAuthRequestToken, arr[1]);
   res.send(oAuthAccessToken);
+});
+
+app.post('/createTweet', async function createTweetRequest(req,res){
+  console.log(req.body);
+  const arr = req.body.split("|");
+  const oAuthAccessToken = JSON.parse(arr[0]);
+  const response = postTweet(oAuthAccessToken, arr[1]);
+  res.send(response);
+});
+
+app.post('/deleteTweet', async function deleteTweetRequest(req,res){
+  console.log(req.body);
+  const arr = req.body.split("|");
+  const oAuthAccessToken = JSON.parse(arr[0]);
+  const response = deleteTweet(oAuthAccessToken, arr[1]);
+  res.send(response);
 });
 
 // (async () => {
@@ -195,6 +245,11 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.get('/auth',function(req,res){
   console.log(__dirname);
   res.sendFile(path.join(__dirname+'/auth.html'));
+});
+
+app.get('/manage',function(req,res){
+  console.log(__dirname);
+  res.sendFile(path.join(__dirname+'/manage.html'));
 });
 
 //get the html file

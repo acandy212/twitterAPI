@@ -11,13 +11,22 @@
     <h3>
         Manage
     </h3>
-    <form action="/action_page.php">
-        <p><label for="posttweet">Post Tweet:</label></p>
-        <textarea id="posttweet" name="posttweet" rows="4" cols="50">Limit of 255 characters</textarea>
-        <br>
-        <input type="submit" value="Submit">
-      </form>
+    <br>
+    <label for="post_tweet">Post Tweet:</label>
+    <textarea id="tweet_content" placeholder="Limit of 280 characters" rows="6" cols="50" maxlength="280"></textarea>
+    <br>
+    <input type="submit" id="create_button" value="Submit">
+    <p id="post_response"></p>
 
+    <br>
+    <br>
 
+    <label for="delete_tweet">Delete Tweet:</label>
+    <input type="text" id="tweet_id" name="Delete Tweet">
+    <br>
+    <input type="submit" id="delete_button" value="Delete">
+    <p id="delete_response"></p>
+
+    <script type = "text/javascript" src="manage.js"></script>
     </body>
 </html>
