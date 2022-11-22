@@ -5,7 +5,9 @@ import path from "path";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 dotenv.config();
-import Button from 'react-bootstrap/Button';
+
+  //Un comment this out so we can add the change mode button
+//import Button from 'react-bootstrap/Button';
 
 
 
