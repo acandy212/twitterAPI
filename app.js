@@ -265,7 +265,7 @@ app.get('/', function (req, response){
 app.listen(3000, function() {
   console.log('App listening on port 3000')
 })
-  
+
 
 // Creates a button that allow the user to change the theme
 
