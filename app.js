@@ -61,7 +61,7 @@ const data = {
 const endpointURL = `https://api.twitter.com/2/tweets`;
 
 // this example uses PIN-based OAuth to authorize the user
-const requestTokenURL = 'https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write';
+const requestTokenURL = 'https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=delete';
 const accessTokenURL = 'https://api.twitter.com/oauth/access_token';
 const oauth = OAuth({
   consumer: {
@@ -137,6 +137,8 @@ async function postTweet({
     method: 'POST'
   }, token));
 
+  console.log(authHeader);
+
   const req = await got.post(endpointURL, {
     json: {
       "text": create_tweet
@@ -167,18 +169,19 @@ async function deleteTweet({ oauth_token, oauth_token_secret }, tweet_id) {
     oauth.authorize(
       {
         url: endpointURL + "/" + tweet_id,
-        method: "DELETE",
+        method: 'DELETE',
       },
       token
     )
   );
+  console.log(authHeader);
 
   const req = await got.delete(endpointURL, {
     responseType: "json",
     headers: {
-      Authorization: authHeader["Authorization"],
-      'user-agent': "v2DeleteTweetJS",
-      'content-type': "application/x-www-form-urlencoded"
+      Authorization: authHeader["Authorization"]
+      //'user-agent': "v2DeleteTweetJS",
+      //'content-type': "application/json"
     },
   });
   if (req.body) {
