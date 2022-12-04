@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './sass/App.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+
+const LightTheme = React.lazy(() => import('./components/LightTheme'));
+const DarkTheme = React.lazy(() => import('./components/DarkTheme'));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
