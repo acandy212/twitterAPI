@@ -15,7 +15,7 @@ const __dirname = dirname(__filename);
 const app = express();
 app.use(cors());
 
-const URL = 'https://3000-acandy212-twitterapi-i4saaldknbb.ws-us77.gitpod.io' || 'http://127.0.0.1';
+const URL = 'https://final-project-api.onrender.com' || 'http://127.0.0.1';
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 console.log(URL);
 console.log(PORT);
