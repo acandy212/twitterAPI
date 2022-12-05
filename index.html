@@ -69,9 +69,15 @@
                 <form>
                     <div class="tweetbox_input">
                         <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" alt="" >
-                        <input type="text" placeholder="Create a post here!" >
+                        <input type="text" id="tweet_content" placeholder="Create a post here!" rows="6" cols="50" maxlength="280">
                     </div>
-                    <button class="tweetBox_tweetButton">Tweet</button>
+                    <button type="submit" id="create_button" class="tweetBox_tweetButton">Tweet</button>
+                    
+                    <label for="delete_tweet">Delete Tweet By ID:</label>
+                    <input type="text" id="tweet_id" name="Delete Tweet">
+                    <br>
+                    <input type="submit" id="delete_button" value="Delete">
+                    <p id="delete_response"></p>
                 </form>
 
             <div class="post_body">
@@ -112,5 +118,6 @@
                     <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sunsets don&#39;t get much better than this one over <a href="https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw">@GrandTetonNPS</a>. <a href="https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw">#nature</a> <a href="https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw">#sunset</a> <a href="http://t.co/YuKy2rcjyU">pic.twitter.com/YuKy2rcjyU</a></p>&mdash; US Department of the Interior (@Interior) <a href="https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw">May 5, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
+        <script type = "text/javascript" src="manage.js"></script>
     </body>
 </html>
