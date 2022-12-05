@@ -236,3 +236,9 @@ body{
     font-size: 18px;
     font-weight: 800;
 }
+
+.navlink{
+    text-decoration: none;
+    font-size: 30px;
+    color:#50b7f5;
+}
