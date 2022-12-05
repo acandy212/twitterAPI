@@ -1,9 +1,10 @@
-const got = require("got");
-const crypto = require("crypto");
-const OAuth = require("oauth-1.0a");
-const qs = require("querystring");
+//import { post } from "got";
+import { createHmac } from "crypto";
+import OAuth from "oauth-1.0a";
+import { parse } from "querystring";
 
-const readline = require("readline").createInterface({
+import readline from 'readline';
+var rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
@@ -28,7 +29,7 @@ const oauth = OAuth({
   },
   signature_method: "HMAC-SHA1",
   hash_function: (baseString, key) =>
-    crypto.createHmac("sha1", key).update(baseString).digest("base64"),
+    createHmac("sha1", key).update(baseString).digest("base64"),
 });
 
 async function input(prompt) {
@@ -44,17 +45,17 @@ async function requestToken() {
   const authHeader = oauth.toHeader(
     oauth.authorize({
       url: requestTokenURL,
-      method: "POST",
+      method: "DELETE",
     })
   );
 
-  const req = await got.post(requestTokenURL, {
+  const req = await post(requestTokenURL, {
     headers: {
       Authorization: authHeader["Authorization"],
     },
   });
   if (req.body) {
-    return qs.parse(req.body);
+    return parse(req.body);
   } else {
     throw new Error("Cannot get an OAuth request token");
   }
@@ -64,17 +65,17 @@ async function accessToken({ oauth_token, oauth_token_secret }, verifier) {
   const authHeader = oauth.toHeader(
     oauth.authorize({
       url: accessTokenURL,
-      method: "POST",
+      method: "DELETE",
     })
   );
   const path = `https://api.twitter.com/oauth/access_token?oauth_verifier=${verifier}&oauth_token=${oauth_token}`;
-  const req = await got.post(path, {
+  const req = await post(path, {
     headers: {
       Authorization: authHeader["Authorization"],
     },
   });
   if (req.body) {
-    return qs.parse(req.body);
+    return parse(req.body);
   } else {
     throw new Error("Cannot get an OAuth request token");
   }
@@ -96,7 +97,7 @@ async function getRequest({ oauth_token, oauth_token_secret }) {
     )
   );
 
-  const req = await got.delete(endpointURL, {
+  const req = await delete(endpointURL, {
     responseType: "json",
     headers: {
       Authorization: authHeader["Authorization"],

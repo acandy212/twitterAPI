@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 
 function App() {
     const [theme, setTheme] = useState('light');
@@ -16,4 +16,17 @@ function App() {
     )
 }
 
-export default App;
+export default App; */
+
+import React, { Component } from "react";
+
+class App extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
+        }
+    }
+}
+
+
