@@ -15,6 +15,18 @@
     </head>
     <body>
         <script src="app.js"></script>
+        <script src="my-react-app/src/components/App.jsx"></script>
+        <div id="toggle">
+            <i class="indicator"></i>
+        </div>
+        <script>
+            const body = document.querySelector('body');
+            const toggle = document.getElementById('toggle');
+            toggle.onclick = function(){
+                toggle.classList.toggle('active')
+                body.classList.toggle('active');
+            }
+        </script>
         <!--Creating a side nav bar-->
         <div class="sidebar">
             <i class="fab fa-twitter"></i>
@@ -100,15 +112,17 @@
             </div>
             </div>
         </div>
+        
         <div class="widgets">
                 <div class="widget_input">
                     <span class="material-icons widgets_searchIcon">search</span>
                     <input type="text" placeholder="Find Someone" />
                 </div>
                
-                <button type="button" "btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+               
+                <!--<button type="button" "btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
                     <span class="material-icons">dark_mode</span>
-                  </button>
+                  </button> -->
                 <div class="widgets_widgetContainer">
                     <h3>What's New!</h3>
                     <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sunsets don&#39;t get much better than this one over <a href="https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw">@GrandTetonNPS</a>. <a href="https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw">#nature</a> <a href="https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw">#sunset</a> <a href="http://t.co/YuKy2rcjyU">pic.twitter.com/YuKy2rcjyU</a></p>&mdash; US Department of the Interior (@Interior) <a href="https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw">May 5, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
