@@ -10,7 +10,6 @@ document.getElementById('create_button').addEventListener("click", async functio
     .then(res => res.text())
     .then(data => {
       console.log(data);
-      //document.getElementById("auth_link").innerHTML = arr[0];
     });
   });
 
@@ -26,6 +25,5 @@ document.getElementById('create_button').addEventListener("click", async functio
     .then(res => res.text())
     .then(data => {
       console.log(data);
-      //document.getElementById("auth_link").innerHTML = arr[0];
     });
   });

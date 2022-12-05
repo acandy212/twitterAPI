@@ -10,23 +10,19 @@ var rl = readline.createInterface({
 });
 
 
-// The code below sets the consumer key and consumer secret from your environment variables
-// To set environment variables on macOS or Linux, run the export commands below from the terminal:
-// export CONSUMER_KEY='YOUR-KEY'
-// export CONSUMER_SECRET='YOUR-SECRET'
+
 const consumer_key = "YcywEuOacedK4NOFAw7xwo4oD";
 const consumer_secret = "eqGsinvX8YNc9lLoJ2iC9Yjh7UCKxAz3r8pBFqHWnVpkguvWJo";
 
 
-// Be sure to add replace the text of the with the text you wish to Tweet.
-// You can also add parameters to post polls, quote Tweets, Tweet with reply settings, and Tweet to Super Followers in addition to other features.
+
 const data = {
   "text": "We bear bears"
 };
 
 const endpointURL = `https://api.twitter.com/2/tweets`;
 
-// this example uses PIN-based OAuth to authorize the user
+
 const requestTokenURL = 'https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write';
 const authorizeURL = new URL('https://api.twitter.com/oauth/authorize');
 const accessTokenURL = 'https://api.twitter.com/oauth/access_token';
@@ -166,14 +162,6 @@ async function getRequest({
     const bearer = await accessTokenBearer();
     console.log(bearer);
     const response = await getRequestBearer(JSON.parse(bearer).access_token);
-    // Get authorization
-    // authorizeURL.searchParams.append('oauth_token', oAuthRequestToken.oauth_token);
-    // console.log('Please go here and authorize:', authorizeURL.href);
-    // const pin = await input('Paste the PIN here: ');
-    // // Get the access token
-    // const oAuthAccessToken = await accessToken(oAuthRequestToken, pin.trim());
-    // // Make the request
-    // const response = await getRequest(oAuthAccessToken);
     console.dir(response, {
       depth: null
     });

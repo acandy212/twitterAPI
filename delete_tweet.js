@@ -85,7 +85,8 @@ async function getRequest({ oauth_token, oauth_token_secret }) {
     key: oauth_token,
     secret: oauth_token_secret,
   };
-// Now using the delete method to delete a tweet
+
+  
   const authHeader = oauth.toHeader(
     oauth.authorize(
       {
