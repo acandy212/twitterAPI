@@ -1,0 +1,19 @@
+/*$background-color: #bbccee;
+$white-color: rgb(80, 71, 71);
+$link-color: #09708d; */
+
+.light{
+    .text {
+        color: $dark-900;
+    }
+    
+    .background {
+        background-color: $dark-000;
+    }
+}
+
+
+
+
+
+@import 'App'
