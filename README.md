@@ -2,6 +2,6 @@
 # Account: TwitterAPI2022
 
 
-In this API the user will be able to create tweets through our website and be able to delete them by ID. The Authentication page will let us authorize the website so changes can be made to the users account. Click the login button then it will take you to the twitter login page where you will sign in and then it will take you back to out website where you would create a post. If you want to see the post here is the twitter link https://twitter.com/michael1_farmer
+In this API the user will be able to create tweets through our website and be able to delete them by ID. Then it will take you to an authorization page just click the login button then it will take you to the twitter login page where you will sign in and then it will take you back to out website where you would create a post. If you want to see the demo post here is the twitter link https://twitter.com/michael1_farmer
 
 There is also an option for light and dark mode when you choose the button in the left hand corner.
