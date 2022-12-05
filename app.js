@@ -76,7 +76,7 @@ async function deleteTweet(tweet_id) {
     const response = await client.tweets.deleteTweetById(tweet_id, );
   
   console.log("response", JSON.stringify(response, null, 2));
-    res.send(response);
+    return response;
   } catch (error) {
     console.log("tweets error", error);
   }
