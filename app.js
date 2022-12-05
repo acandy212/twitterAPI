@@ -32,12 +32,11 @@ const STATE = "my-state";
 
 app.get("/callback", async function (req, res) {
   try {
-    console.log("MY FOOT");
     const { code, state } = req.query;
     if (state !== STATE) return res.status(500).send("State isn't matching");
     await authClient.requestAccessToken(code);
     console.log(authClient.token);
-    res.redirect("/manage");
+    res.redirect("/index");
   } catch (error) {
     console.log(error);
   }
@@ -108,37 +107,17 @@ app.get('/auth',function(req,res){
   res.sendFile(path.join(__dirname+'/auth.html'));
 });
 
-app.get('/manage',function(req,res){
+app.get('/index',function(req,res){
   console.log(__dirname);
-  res.sendFile(path.join(__dirname+'/manage.html'));
+  res.sendFile(path.join(__dirname+'/index.html'));
 });
 
 //get the html file
 app.get('/', function (req, response){
-  response.sendfile('index.html');
+  response.redirect('/auth');
 })
 
 
 app.listen(3000, function() {
   console.log('App listening on port 3000')
 })
-
-
-// Creates a button that allow the user to change the theme
-
-// function APP() {
-//   return (
-//     <div className="APP">
-
-//           <Button variant= "danger" onClick={() => {localStorage.setItem('theme', localStorage.getItem('theme') === 'dark' ? 'light' : 'dark'); 
-//         window.location.reload();}}>
-//           Change Mode 
-//         </Button>
-//       <Header 
-//         linkText="Learn React"
-//         linkUrl="https://reactjs.org" />
-//     </div>
-//   );
-// }
-
-// export default App;

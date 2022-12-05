@@ -119,7 +119,7 @@ body{
     padding-right: 10px;
 }
 
-.tweetBox form {
+.tweetBox {
     display: flex;
     flex-direction: column;
 }
