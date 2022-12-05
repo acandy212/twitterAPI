@@ -5,7 +5,7 @@ document.getElementById('create_button').addEventListener("click", async functio
           'Content-Type' : 'text/plain'
         },
         mode: 'cors',
-        body: sessionStorage.getItem("accessToken") + "|" + document.getElementById("tweet_content").value
+        body: document.getElementById("tweet_content").value
       })
     .then(res => res.text())
     .then(data => {
@@ -21,7 +21,7 @@ document.getElementById('create_button').addEventListener("click", async functio
           'Content-Type' : 'text/plain'
         },
         mode: 'cors',
-        body: sessionStorage.getItem("accessToken") + "|" + document.getElementById("tweet_id").value
+        body: document.getElementById("tweet_id").value
       })
     .then(res => res.text())
     .then(data => {
